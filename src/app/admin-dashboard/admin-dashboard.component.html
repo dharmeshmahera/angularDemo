@@ -1,0 +1,41 @@
+<script>
+    $scope.Math = window.Math;
+</script>
+<h1 style="color:cornflowerblue">DASHBOARD</h1>
+<hr>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xl-3 col-md-6 mt-3">
+            <div class="card bg-primary text-white mb-4">
+                <div class="card-body">Users Information</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <p class="small text-white stretched-link" routerLink="/admin/usersTable">View Details</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mt-3">
+            <div class="card bg-warning text-white mb-4">
+                <div class="card-body">Total Users</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <p class="small text-white ">{{total_user}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mt-3">
+            <div class="card bg-danger text-white mb-4">
+                <div class="card-body">Total Pages</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <p class="small text-white ">{{math.ceil(total_user/5)}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6 mt-3">
+            <div class="card bg-success text-white mb-4">
+                <div class="card-body">Total FAQs</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <p class="small text-white ">{{faqlength}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

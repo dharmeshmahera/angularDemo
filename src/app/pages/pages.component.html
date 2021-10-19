@@ -1,0 +1,5 @@
+<app-header></app-header>
+<button *ngFor='let page of pagedata'  class="btn btn-info ml-3 mt-3"(click)="pagesData(page)" 
+routerLink="/pages/{{page.title}}" routerLinkActive="active">{{page.title}}</button>
+<div class="container col-12" [innerHTML]=pageContent></div>
+<app-footer></app-footer>

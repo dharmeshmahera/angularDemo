@@ -1,0 +1,224 @@
+<!-- -----------------ICON------------------- -->
+<h1 style="color:cornflowerblue">SETTING</h1>
+<hr>
+<div class="container">
+    <h2>ICON SETTING</h2>
+    <div class="row">
+        <div class="col-6">
+        <div class="border border-dark p-5 bg-dark mt-3">
+            <form [formGroup]="iconForm" ng-submit="onSubmit()">
+                <div class="form-group">
+                    <label class="text-white">Select icon</label>
+                    <input class="form-control" type="file" (change)="onFileSelected($event)"><br />
+                </div>
+                <div class="form-group">
+                    <label class="text-white">Enter icon Link:</label>
+                    <input type="text" class="form-control" formControlName="link"><br />
+                    <div *ngIf="iconControls.link.invalid && iconControls.link.dirty && iconControls.link.touched" class="validate">
+                        <div *ngIf="iconControls.link.errors.required" class="validate">IconLink is required!!</div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-info" [disabled]="!iconForm.valid"
+                    (click)="onSubmit()">Add</button>
+            </form>
+        </div>
+        </div>
+        <div class="col-6">
+            <mat-form-field>
+                <mat-label>Filter</mat-label>
+                <input matInput type="text" (keyup)="applyFilterIcon($event)" placeholder="Ex. ium">
+            </mat-form-field>
+            <table mat-table [dataSource]="dataSourceIcon" class="mat-elevation-z8">
+                <ng-container matColumnDef="iconid">
+                    <mat-header-cell *matHeaderCellDef >id</mat-header-cell>
+                    <mat-cell *matCellDef="let iconData">{{iconData.iconid}}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="icon">
+                    <mat-header-cell *matHeaderCellDef >Icon</mat-header-cell>
+                    <mat-cell *matCellDef="let iconData">{{iconData.icon}}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="link">
+                    <mat-header-cell *matHeaderCellDef>Link</mat-header-cell>
+                    <mat-cell *matCellDef="let iconData">{{iconData.link}}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="action">
+                    <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+                    <mat-cell *matCellDef="let iconData">
+                        <button mat-button color="warn" (click)="deleteIcon(iconData.iconid)">Delete</button><br>
+                    </mat-cell>
+                </ng-container>
+                <mat-header-row *matHeaderRowDef="tableColumnsIcon"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: tableColumnsIcon"></mat-row>
+            </table>
+        </div>
+    </div>
+</div>
+<hr>
+
+<!----------------- FAQ ------------------- -->
+<div class="container">
+    <h2>FAQ SETTING</h2>
+    <div class="row">
+        <div class="col-6">
+            <div class="border border-dark p-5 bg-dark mt-3">
+                <form [formGroup]="faqForm" ng-submit="onfaqFormSubmit()">
+                    <div class="form-group">
+                        <label class="text-white">Enter Question:</label>
+                        <textarea type="text" class="form-control" formControlName="question"></textarea><br />
+                        <div *ngIf="faqControls.question.invalid && faqControls.question.dirty && faqControls.question.touched" class="validate">
+                            <div *ngIf="faqControls.question.errors.required" class="validate">Question is required!!</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="text-white">Enter Answers</label>
+                        <textarea type="text" class="form-control" formControlName="answer"></textarea><br />
+                        <div *ngIf="faqControls.answer.invalid && faqControls.answer.dirty && faqControls.answer.touched" class="validate">
+                            <div *ngIf="faqControls.answer.errors.required" class="validate">Answer is required!!</div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-info mt-3" (click)="onfaqFormSubmit()"
+                        [disabled]="!faqForm.valid"
+                        *ngIf="faqForm.controls.faqid.value==0 || faqForm.controls.faqid.value==undefined">Add</button>
+                    <button class="btn btn-info mt-3" type="submit" (click)="onfaqFormSubmit()"
+                        [disabled]="!faqForm.valid" *ngIf="faqForm.controls.faqid.value>0">Update</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-6">
+            <mat-form-field>
+                <mat-label>Filter</mat-label>
+                <input matInput type="text" (keyup)="applyFilterFaq($event)" placeholder="Ex. ium">
+            </mat-form-field>
+            <table mat-table [dataSource]="dataSourceFaq" matSort class="mat-elevation-z8">
+                <ng-container matColumnDef="faqid">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>faqid</mat-header-cell>
+                    <mat-cell *matCellDef="let faqData">{{faqData.faqid}}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="question">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Question</mat-header-cell>
+                    <mat-cell *matCellDef="let faqData">{{faqData.question}}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="answer">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header>Answer</mat-header-cell>
+                    <mat-cell *matCellDef="let faqData">{{faqData.answer}}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="action">
+                    <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+                    <mat-cell *matCellDef="let faqData">
+                        <button mat-button color="primary" (click)="updatefaq(faqData.faqid)">Edit</button>
+                        <button mat-button color="warn" (click)="deleteFaq(faqData.faqid)">Delete</button><br>
+                    </mat-cell>
+                </ng-container>
+                <mat-header-row *matHeaderRowDef="FaqColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: FaqColumns"></mat-row>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5,10,15,20]" showFirstLastButtons></mat-paginator>
+        </div>
+    </div>
+</div>
+<hr>
+<!-- ---------------------------------------------------------------- -->
+<!-- Manage pages -->
+<div class="container">
+    <h2>MANAGE PAGES</h2>
+    <div class="row">
+        <div class="col-6">
+            <div class="border border-dark p-5 bg-dark">
+                <form [formGroup]="pagesForm" ng-submit="onSubmit()">
+                    <div class="form-group">
+                        <label class="text-white">Title:</label>
+                        <input type="text" oninput="this.value = this.value.toUpperCase()" class="form-control" formControlName="title" required><br />
+                        <div *ngIf="pagesControls.title.invalid && pagesControls.title.dirty && pagesControls.title.touched" class="validate">
+                            <div *ngIf="pagesControls.title.errors.required" class="validate">Title is required!!</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="text-white">content:</label>
+                        <angular-editor class="text-white" formControlName="content" [config]="editorConfig">
+                            <div *ngIf="pagesControls.content.invalid && pagesControls.content.dirty && pagesControls.content.touched" class="validate">
+                                <div *ngIf="pagesControls.content.errors.required" class="validate">Content is required!!</div>
+                            </div>
+                        </angular-editor>
+                    </div>
+                    <button type="submit" class="btn btn-info mt-3" (click)="onPagesFormSubmit()" [disabled]="!pagesForm.valid"
+                        *ngIf="pagesForm.controls.pageid.value==0 || pagesForm.controls.pageid.value==undefined">Submit</button>
+
+                    <button class="btn btn-info mt-3" type="submit" (click)="onPagesFormSubmit()" [disabled]="!pagesForm.valid"
+                        *ngIf="pagesForm.controls.pageid.value>0">Update</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-6">
+            <mat-form-field>
+                <mat-label>Filter</mat-label>
+                <input matInput type="text" (keyup)="applyFilterPages($event)" placeholder="Ex. ium">
+            </mat-form-field>
+            <table mat-table [dataSource]="dataSourcePages" class="mat-elevation-z8">
+                <ng-container matColumnDef="pageid">
+                    <mat-header-cell *matHeaderCellDef>pageid</mat-header-cell>
+                    <mat-cell *matCellDef="let pages">{{pages.pageid}}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="title">
+                    <mat-header-cell *matHeaderCellDef>title</mat-header-cell>
+                    <mat-cell *matCellDef="let pages">{{pages.title}}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="content">
+                    <mat-header-cell *matHeaderCellDef>content</mat-header-cell>
+                    <mat-cell *matCellDef="let pages">{{pages.content}}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="action">
+                    <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+                    <mat-cell *matCellDef="let pages">
+                        <button mat-button color="primary" (click)="updatepages(pages.pageid)">Edit</button>
+                        <button mat-button color="warn" (click)="deletePages(pages.pageid)">Delete</button><br>
+                    </mat-cell>
+                </ng-container>
+                <mat-header-row *matHeaderRowDef="PagesColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: PagesColumns"></mat-row>
+            </table>
+        </div>
+    </div>
+</div>
+<hr>
+<!-- -----------------------------------update logo------------------------- -->
+<div class="container">
+    <h2>UPDATE LOGO</h2>
+    <input type="file" (change)="onLogoUpdateFileSelected($event)">
+    <button type="button"(click)="logoUpdate()"class="mt-2 btn btn-info">Change Logo</button><br>
+</div>
+<hr>
+
+<!-- --------------------------------update company detail----------------------------------- -->
+<div class="container">
+    <h2>UPDATE COMPANY DETAIL</h2>
+<div class="border border-dark p-5 bg-dark">
+    <form [formGroup]="companyDetailForm" ng-submit="onSubmit()">
+        <div class="form-group">
+            <label class="text-white">Address:</label>
+            <input type="text" class="form-control" formControlName="address" required><br />
+            <div *ngIf="companyControls.address.invalid && companyControls.address.dirty && companyControls.address.touched" class="validate">
+                <div *ngIf="companyControls.address.errors.required" class="validate">Address is required!!</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="text-white">Email:</label>
+            <input type="text" class="form-control" formControlName="email" required><br />
+            <div *ngIf="companyControls.email.invalid && companyControls.email.dirty && companyControls.email.touched" class="validate">
+                <div *ngIf="companyControls.email.errors.required" class="validate">Email is required!!</div>
+            </div>
+            <div *ngIf="companyEmail.errors?.email">
+                <div class="validate">Email not valid.</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="text-white">Phone:</label>
+            <input type="text" class="form-control" formControlName="phone" required><br />
+            <div *ngIf="companyControls.phone.invalid && companyControls.phone.dirty && companyControls.phone.touched" class="validate">
+                <div *ngIf="companyControls.phone.errors.required" class="validate">Phone is required!!</div>
+            </div>
+        </div>
+        <button class="btn btn-info mt-3" type="submit" (click)="onCompanyDetailFormSubmit()" [disabled]="!companyDetailForm.valid">Update</button>
+    </form>
+</div>
+</div>

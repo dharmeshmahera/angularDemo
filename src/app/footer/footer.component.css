@@ -1,0 +1,35 @@
+.icon
+{
+    height: 25px;
+    width: 25px;
+    border-radius: 12%;    
+
+}
+.container
+{
+    padding:0px;
+}
+/* .ftr
+{
+    position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+} */
+#para
+{
+    font-size: 19px;
+    /* line-height: 1.5; */
+    line-height: 34.5px;
+}
+#detail
+{
+    border-left: 15px solid #b33735;
+    padding-left: 50px;
+    padding-right:50px;
+    
+}
+.anchor
+{
+    color:#b33735 !important;
+}

@@ -1,0 +1,51 @@
+<h1 style="color:cornflowerblue">MANAGE USERS</h1>
+<hr>
+<div class="container-fluid">
+    <div class="col-12 text-center"><button class="btn btn-info ml-3" routerLink="/createUsers">CREATE USERS</button>
+    </div>
+    <mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input matInput type="text" (keyup)="applyFilter($event)" placeholder="Ex. ium">
+    </mat-form-field>
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>id</mat-header-cell>
+            <mat-cell *matCellDef="let users">{{users.id}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="role">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Role</mat-header-cell>
+            <mat-cell *matCellDef="let users">{{users.role}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+            <mat-cell *matCellDef="let users">{{users.name}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
+            <mat-cell *matCellDef="let users">{{users.email}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="password">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Password</mat-header-cell>
+            <mat-cell *matCellDef="let users">{{users.password}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="profilePic">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>profilePic</mat-header-cell>
+            <mat-cell *matCellDef="let users"><img src="http://localhost:3000/uploads/{{users.profile_pic}}" />
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="birthdate">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Birthdate</mat-header-cell>
+            <mat-cell *matCellDef="let users">{{users.birthdate|date:'dd/MM/yyyy'}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="action">
+            <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+            <mat-cell *matCellDef="let users">
+                <button mat-button color="warn" (click)="deleteUsers(users.id)">Delete</button><br>
+                <button mat-button color="primary" (click)="updateProfile(users.id)">profileEdit</button>
+            </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: tableColumns"></mat-row>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5,10,15,20]" showFirstLastButtons></mat-paginator>
+</div>

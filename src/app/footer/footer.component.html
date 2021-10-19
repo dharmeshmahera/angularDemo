@@ -1,0 +1,21 @@
+<footer id="footer" class="bg-dark text-white ftr mt-5">
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+        <div class=" col-md-6 footer-info">
+          <p>
+            <strong>Address:</strong>{{companyAddress}}<br>
+            <strong>Phone:</strong> {{companyPhone}}<br>
+            <strong>Email:</strong> {{companyEmail}}<br>
+          </p>
+        </div>
+        <div class=" col-md-6">
+          <div class="social-links mt-3">
+            <a *ngFor="let icondata of iconData" href="{{icondata.link}}"><img
+                src="http://localhost:3000/uploads/{{icondata.icon}}" class="icon mr-2" /></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

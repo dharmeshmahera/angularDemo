@@ -1,0 +1,68 @@
+<div class="container col-12">
+  <div class="row pb-2">
+    <div class="col-6 hdr">
+      <a href="mailto:{{companyEmail}}" class="mr-2 anchor"><span class="fa fa-envelope"></span>{{companyEmail}}</a>
+      <a href="tel:{{companyPhone}}" class="anchor"><span class="fa fa-phone"></span>{{companyPhone}} </a>
+    </div>
+    <div class="col-md-6 col-sm-12 text-right">
+      <div>
+        <a *ngFor="let icondata of iconData" href="{{icondata.link}}"><img
+            src="http://localhost:3000/uploads/{{icondata.icon}}" class="icon mr-2" /></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container col-12">
+  <nav class="navbar navbar-expand-md navbar-light bg-dark text-white">
+    <a href="#" class="navbar-brand"><img src="http://localhost:3000/uploads/{{companyLogo}}"
+        style="height:60px;width:250px" /></a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end text-right" id="navbarCollapse">
+      <div class="navbar-nav">
+        <button class="btn btn-dark" routerLink="/pages" routerLinkActive="active">PAGES</button>
+        <button class="btn btn-dark" routerLink="/contact-us">CONTACT US</button>
+        <button class="btn btn-dark ml-3" routerLink="/faq">FAQ</button>
+        <button class="btn btn-dark ml-3" (click)="logOut()">LOGOUT</button>
+      </div>
+    </div>
+  </nav>
+</div>
+<div class=" text-left mt-3" id="detail">
+  <div class="row col-12 text-center">
+    <h1 class=" col-12 text-center">The One Technologies</h1>
+    <p id="para">
+      The One Technologies is counted amongst the most trusted offshore web and software development company located in
+      Ahmedabad, India. At present, We have ventured in the business of Mobile application development, Website
+      development, Open source customization, Custom software development and Graphics designing.
+
+      Although we are unbeatable in what we do and what we create, it is important for us to witness a broad and highly
+      satisfied smile on our clients face. Our focus does not only believe in long term relationships, but we also
+      thrive to maintain them proficiently. After all good relations are created after delivering the best possible
+      results by outstanding quality of work and 24X7 support.
+    </p>
+  </div>
+</div>
+<footer id="footer" class="bg-dark text-white ftr">
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+        <div class=" col-md-6 footer-info">
+          <p>
+            <strong>Address:</strong>{{companyAddress}}<br>
+            <strong>Phone:</strong> {{companyPhone}}<br>
+            <strong>Email:</strong> {{companyEmail}}<br>
+          </p>
+        </div>
+        <div class=" col-md-6">
+          <div class="social-links mt-3">
+            <a *ngFor="let icondata of iconData" href="{{icondata.link}}"><img
+                src="http://localhost:3000/uploads/{{icondata.icon}}" class="icon mr-2" /></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

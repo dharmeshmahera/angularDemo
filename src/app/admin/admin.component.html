@@ -1,0 +1,56 @@
+<div class="d-flex" id="wrapper">
+  <div class="bg-dark border-right" id="sidebar-wrapper">
+    <div class="sidebar-heading bg-dark text-white">
+      <img src="http://localhost:3000/uploads/{{loginUserProfilePic}}" class="adminlogo"><br>
+      {{loginUserName}}
+    </div>
+    <div class="list-group list-group-flush">
+      <a class="list-group-item list-group-item-action bg-dark text-white" routerLink="/admin/dashboard"
+        routerLinkActive="active">Dashboard</a>
+      <a href="#" class="list-group-item list-group-item-action bg-dark text-white" routerLink="/admin/usersTable"
+        routerLinkActive="active">Manage
+        Users</a>
+      <a href="#" class="list-group-item list-group-item-action bg-dark text-white" routerLink="/admin/setting"
+        routerLinkActive="active">Setting</a>
+    </div>
+  </div>
+  <div id="page-content-wrapper">
+    <nav class="navbar navbar-expand-lg navbar-light  border-bottom bg-dark">
+      <button class="btn bg-dark text-white" id="menu-toggle"><span class="material-icons">menu</span></button>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+          <li class="nav-item">
+            <mat-menu #appMenu="matMenu">
+              <button mat-menu-item routerLink="/admin/editProfile">Edit Profile</button>
+              <button mat-menu-item routerLink="/admin/setting">setting</button>
+              <button mat-menu-item routerLink="/" (click)="logOut()">Logout</button>
+            </mat-menu>
+            <button mat-icon-button [matMenuTriggerFor]="appMenu">
+              <mat-icon class="text-white">more_vert</mat-icon>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="mt-5">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+<footer id="footer" class="bg-primary text-white pt-3 pb-3 ftr mt-5">
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+        <div class="footer-info">
+          <div class="pull-left">
+            <p>Copyright 2020 by DM</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

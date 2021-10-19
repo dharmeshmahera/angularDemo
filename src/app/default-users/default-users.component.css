@@ -1,0 +1,14 @@
+.icon
+{
+    height: 25px;
+    width: 25px;
+    border-radius: 12%;    
+}
+.container
+{
+    padding:0px;
+}
+.anchor
+{
+    color:#b33735 !important;
+}

@@ -1,0 +1,38 @@
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<div class="container col-12">
+  <div class="row pb-2">
+    <div class="col-lg-16 col-md-6 col-sm-12  hdr">
+      <a href="mailto:{{companyEmail}}" class="mr-2 anchor"><span class="fa fa-envelope"></span>{{companyEmail}}</a>
+      <a href="tel:{{companyPhone}}" class="anchor"><span class="fa fa-phone"></span>{{companyPhone}} </a>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 text-right">
+      <div>
+        <a *ngFor="let icondata of iconData" href="{{icondata.link}}"><img
+            src="http://localhost:3000/uploads/{{icondata.icon}}" class="icon mr-2" /></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container col-12">
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark text-white">
+    <button type="button" class="navbar-toggler bg-light text-white" data-toggle="collapse"
+      data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"
+      (click)="toggleCollapsed()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a routerLink="/" class="navbar-brand"><img src="http://localhost:3000/uploads/{{companyLogo}}"
+        style="height:60px;width:250px" /></a>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse"
+      [ngClass]="{'collapse': collapsed, 'navbar-collapse': true}">
+      <div class="nav navbar-nav">
+        <button class="btn btn-dark" routerLink="/pages" routerLinkActive="active">PAGES</button>
+        <button class="btn btn-dark" routerLink="/contact-us" routerLinkActive="active">CONTACT US</button>
+        <button class="btn btn-dark ml-3" routerLink="/faq" routerLinkActive="active">FAQ</button>
+        <button class="btn btn-dark ml-3" routerLink="/login" routerLinkActive="active">LOGIN</button>
+        <button class="btn btn-dark ml-3" routerLink="/createUsers" routerLinkActive="active">SIGNUP</button>
+      </div>
+    </div>
+  </nav>
+</div>
+<div class="container col-12" [innerHTML]=pageContent></div>
+

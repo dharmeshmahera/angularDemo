@@ -1,0 +1,43 @@
+h1
+{
+    font-weight:300;
+}
+.hdrlogo
+{
+    font-size:25px;
+   color:#B015C8; 
+}
+.arrow
+{
+    font-size:15px;   
+}
+.hdritem
+{
+    font-weight:600;
+}
+.roundedbtn
+{
+    border-radius:1.25rem!important;
+}
+.hdrnavbar
+{
+    background-image: linear-gradient(-90deg, blue, #B015C8 );
+    
+}
+.navlink
+{
+    color:white !important;
+   
+}
+.validate
+{
+    color:red;
+}
+#datepicker
+{
+    color:green;
+}
+.mat-input-element
+{
+    background-color: white !important;
+}

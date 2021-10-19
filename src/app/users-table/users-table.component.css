@@ -1,0 +1,38 @@
+.mat-column-id {
+    flex: 0 0 5%;
+}
+.mat-column-name {
+    flex: 0 0 7%;
+}
+.mat-column-role {
+  flex: 0 0 8%;
+}
+.mat-column-email {
+  flex: 0 0 12%;
+}
+.mat-column-password {                           
+  flex: 0 0 38%;
+}
+.mat-column-birthdate {                           
+  flex: 0 0 8%;
+}
+.mat-column-profilePic {                           
+  flex: 0 0 8%;
+}
+.mat-column-action {
+  flex: 0 0 20%;
+}
+
+
+table {
+  width: 100%;
+}
+.validate
+{
+  color:red;
+}
+img
+{
+  height:100px;
+  width:100px;
+}
